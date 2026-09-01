@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  /* Their collateral is a gold crown on deep navy, always set on a clean
+     ground. This site runs ivory-first with navy and foil, so it reads as a
+     heritage house rather than another dark showroom page. */
+  --color-ivory: #f6f2e9;
+  --color-ivory-2: #fffdf8;
+  --color-ivory-3: #e9e2d3;
+  --color-navy: #10192c;
+  --color-navy-2: #1b2740;
+  --color-navy-3: #3a4761;
+  --color-foil: #b6893c;
+  --color-foil-lit: #e0bd77;
+  --color-quiet: #6d7385;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-public), system-ui, sans-serif;
+  --font-arabic: var(--font-almarai), "Segoe UI", sans-serif;
+
+  --text-hero: clamp(2.6rem, 7vw, 6.25rem);
+  --text-display: clamp(1.9rem, 4.2vw, 3.7rem);
+  --text-section: clamp(1.45rem, 2.6vw, 2.3rem);
+  --text-lead: clamp(1rem, 1.25vw, 1.2rem);
+}
+
+@layer base {
+  html {
+    background: var(--color-ivory);
+    color: var(--color-navy);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  html[dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+
+  ::selection {
+    background: var(--color-foil);
+    color: var(--color-ivory-2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* Foil, as it appears on their crown: a gradient, never a flat gold. */
+@utility text-foil {
+  background: linear-gradient(
+    102deg,
+    #8a6425 0%,
+    #b6893c 26%,
+    #efd396 48%,
+    #b6893c 70%,
+    #8a6425 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility rule-foil {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-foil) 22%,
+    var(--color-foil-lit) 50%,
+    var(--color-foil) 78%,
+    transparent
+  );
+}
+
+/* Arabic corrections, unlayered so they outrank the utilities. */
+html[dir="rtl"] .font-display {
+  font-family: var(--font-arabic);
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .text-hero {
+  font-size: clamp(1.95rem, 5.4vw, 4.7rem);
+  line-height: 1.32;
+}
+
+html[dir="rtl"] .text-display {
+  font-size: clamp(1.55rem, 3.5vw, 3rem);
+  line-height: 1.36;
+}
+
+html[dir="rtl"] .text-section {
+  font-size: clamp(1.25rem, 2.3vw, 1.95rem);
+  line-height: 1.4;
+}
+
+html[dir="rtl"] [class*="tracking-["] {
+  letter-spacing: 0.01em;
+}
