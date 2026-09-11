@@ -1,38 +1,74 @@
-# El Emam Motors — concept site
+# El Emam Motors — site 04 of 46
 
-A concept site for **El Emam Motors**, an authorised dealer for 15+ makes with
-branches in Maadi, Manial and Nasr City, trading for 51 years. Bilingual
-Arabic / English with full RTL support.
+A concept site built entirely from this dealership's own published material.
+**Not affiliated with El Emam Motors, and not an official site.**
 
-Imagery, prices and voice come from their own Instagram
-([@elemammotors](https://www.instagram.com/elemammotors/)) and Facebook.
-Unofficial concept, not affiliated with the dealership.
+- **Live:** https://el-emam-motors-site.vercel.app
+- **Repo:** [el-emam-motors-site](https://github.com/omaralaa0707/el-emam-motors-site)
 
-## Design notes
+## What this page is about
 
-- **Signature interaction** — built around their own line, *"اختار مقدمك،
-  والمقدم هو اللي يحدد قسطك"*. Picking a deposit tier reveals the instalment
-  **they published** for it; nothing is calculated or invented.
-- **Signature 3D** — the camera flies down a corridor of their campaign art
-  (react-three-fiber). The movement is depth rather than rotation, and it falls
-  back to a static grid under reduced motion *or* if the browser drops the
-  WebGL context.
-- **Palette** is ivory and navy with foil, taken from their gold-crown
-  collateral — a heritage house rather than another dark showroom page.
-- **Type** — Fraunces with Public Sans, and Almarai for Arabic.
+Every site in this series is built around something true and checkable about
+the dealer's own account — a pattern in what they publish, a contradiction
+between two of their channels, or a fact about their showroom — rather than
+around a generic template. The palette, type, 3D piece and motion below were
+all chosen to serve that finding.
 
-## On the imagery
+## Design record
 
-Their feed includes photographs of identifiable customers, and their Instagram
-avatar is a personal family photograph. Neither is republished here: the site
-uses product and campaign art only, and the crown mark is drawn as an SVG.
+**Palette**
+: Ivory / navy / gold foil (their crown collateral)
 
-## Local development
+**Type pairing**
+: Fraunces + Public Sans / Almarai
+
+**3D / signature technique**
+: 3D corridor of campaign art, scroll flies the camera through depth
+
+**Motion language**
+: Warm and ceremonial; deposit-picker reveals their published instalment
+
+## Sources
+
+Everything on the page was sourced from:
+
+- Instagram: https://www.instagram.com/elemammotors/
+- Facebook: https://www.facebook.com/ElEmamforCars/
+- Google Maps: https://www.google.com/maps/search/?api=1&query=El+Emam+Motors+Cairo
+
+Photography belongs to the dealership (or, where their frames are watermarked
+by an outside studio, to that studio) and is used here only to document their
+own published material. No figure on the page is invented: anything the dealer
+did not publish is marked as unpublished rather than estimated.
+
+## Running it
 
 ```bash
 pnpm install
-pnpm dev
+pnpm dev      # http://localhost:3000
+pnpm build    # production build — must pass before shipping
+pnpm lint     # eslint, zero warnings
 ```
 
-Next.js 16, React 19, Tailwind v4, GSAP, Lenis, react-three-fiber.
-Designed and built by Claude.
+Requires `node-linker=hoisted` in `.npmrc` (already present) or three.js peer
+deps fail to resolve.
+
+## Structure
+
+```
+src/content/media.ts      verified facts and figures — the data layer
+src/content/en.ts|ar.ts   all copy, both locales, identical shapes
+src/content/schema-ext.ts the page-specific content contract
+src/components/webgl/     the 3D piece
+src/components/site/      the page composition
+src/app/globals.css       palette tokens, type, RTL overrides, motion
+```
+
+Arabic/English toggle with full RTL. All CSS direction overrides key off
+`[dir="rtl"]` (never `[lang]`) and live outside `@layer`. Every Latin or
+numeric fragment inside Arabic copy is wrapped in `.latin` for correct bidi.
+
+---
+
+Part of a 46-site series. See the [top-level README](../README.md) for the full
+index and [`TRACKING.md`](../TRACKING.md) for the differentiation log.
