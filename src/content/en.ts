@@ -76,8 +76,7 @@ export const en: SiteContent = {
     cta: "Get directions",
   },
   footer: {
-    disclaimer: "Concept design — not an official El Emam Motors website.",
-    rights: "All imagery and offers belong to El Emam Motors.",
+    rights: "© El Emam Motors. All rights reserved.",
   },
   a11y: {
     toggleLanguage: "Switch to Arabic",

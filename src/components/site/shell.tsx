@@ -338,11 +338,8 @@ export function Visit() {
           </div>
 
           <div className="mt-14 flex flex-col gap-3 border-t border-ivory/15 pt-8 text-xs text-ivory/50 md:flex-row md:items-center md:justify-between">
-            <p>{content.footer.disclaimer}</p>
             <p>
               {content.footer.rights}
-              <span className="mx-2 opacity-50">/</span>
-              {locale === "ar" ? "صُمم بواسطة Claude" : "Designed by Claude"}
             </p>
           </div>
         </div>
