@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 import { useLocale } from "@/i18n/locale-provider";
 import { useReducedMotion } from "@/lib/use-browser";
-import { gsap, useGSAP } from "@/lib/gsap";
 import { CORRIDOR, HANDOVERS } from "@/content/media";
 
 const Corridor = dynamic(
